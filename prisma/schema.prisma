@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model avslutade_kurser {
+  id         Int      @id @default(autoincrement())
+  kod        String   @db.VarChar(10)
+  benamning  String   @db.VarChar(255)
+  omfattning Decimal  @db.Decimal(3, 1)
+  betyg      String   @db.Char(1)
+  datum      DateTime @db.Date
+  notering   String?  @db.VarChar(255)
+}
